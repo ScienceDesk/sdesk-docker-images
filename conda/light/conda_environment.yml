@@ -1,0 +1,15 @@
+name: conda_environment
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.6.5
+  - numpy
+  - pandas
+  - pytorch-cpu
+  - scikit-image
+  - simplejson
+  - minio
+  - requests
+  - igor
+  - pip

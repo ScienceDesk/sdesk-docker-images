@@ -1,0 +1,15 @@
+name: conda_environment
+channels:
+  - conda-forge
+  - fastai
+  - pytorch
+dependencies:
+  - python=3.6.5
+  - fastai=1.0.52
+  - pytorch-cpu
+  - torchvision-cpu
+  - pytorch-nightly
+  - simplejson
+  - minio
+  - requests
+  - igor

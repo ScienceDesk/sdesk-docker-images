@@ -5,7 +5,7 @@ source build-image.inc.sh
 IMAGES=(
   conda/base
   conda/light
-  # conda/cpu
+  conda/cpu
   # conda/gpu
 )
 

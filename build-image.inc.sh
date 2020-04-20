@@ -1,3 +1,8 @@
+die() {
+  echo $1
+  exit -1
+}
+
 build_images () {
   echo "Building image: ${IMG}:${TAG}"
   docker build -t ${IMG}:${TAG} -f ${CONTEXT_DIR}/Dockerfile ${CONTEXT_DIR}

@@ -8,11 +8,11 @@ RUN conda env create -n sdesk -f /sdesk-conda/conda_environment.yml && \
 
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
-COPY requirements.txt /sdesk-conda/requirements.txt
 COPY conda-requirements.txt /sdesk-conda/conda-requirements.txt
 RUN conda install -n sdesk -c conda-forge --file conda-requirements.txt
 SHELL ["conda", "run", "-n", "sdesk", "/bin/bash", "-c"]
 
+COPY requirements.txt /sdesk-conda/requirements.txt
 RUN pip install -r requirements.txt
 
 COPY entrypoint.sh /sdesk-conda/entrypoint.sh

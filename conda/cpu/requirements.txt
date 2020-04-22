@@ -1,1 +1,1 @@
-sdesk
+sdesk==0.2.1

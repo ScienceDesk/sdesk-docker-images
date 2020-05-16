@@ -5,10 +5,10 @@ channels:
   - pytorch
 dependencies:
   - python=3.6.5
-  - fastai=1.0.52
-  - pytorch-cpu
-  - torchvision-cpu
-  - pytorch-nightly
+  - fastai=1.0.57
+  - pytorch=1.2.0
+  - torchvision=0.4.0
+  - cpuonly
   - simplejson
   - minio
   - requests

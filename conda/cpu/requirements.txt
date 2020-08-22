@@ -1,2 +1,1 @@
---extra-index-url https://pypi.debonzi.dev/simple/
 sdesk==0.2.3

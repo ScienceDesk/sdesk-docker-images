@@ -6,7 +6,7 @@ IMAGES=(
   conda/base
   conda/light
   conda/cpu
-  conda/gpu
+#  conda/gpu
 )
 
 if [ $1 != "" ]; then

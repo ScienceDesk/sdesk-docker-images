@@ -2,7 +2,8 @@
 
 source version.inc.sh
 
-SDESK_RUNTIME_IMAGE="$IMG:$TAG"
+#SDESK_RUNTIME_IMAGE="$IMG:$TAG"
+SDESK_RUNTIME_IMAGE="sciencedesk/sdesk-conda3:cpu"
 
 SDESK_CODE_DIR="$1"
 shift

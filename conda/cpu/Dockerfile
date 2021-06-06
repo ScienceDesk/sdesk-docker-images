@@ -15,6 +15,7 @@ RUN conda install -n sdesk -c conda-forge --file conda-requirements.txt
 SHELL ["conda", "run", "-n", "sdesk", "/bin/bash", "-c"]
 
 COPY requirements.txt /sdesk-conda/requirements.txt
+ENV PIP_EXTRA_INDEX_URL https://pypi.debonzi.dev/simple
 RUN pip install -r requirements.txt
 
 COPY entrypoint.sh /sdesk-conda/entrypoint.sh

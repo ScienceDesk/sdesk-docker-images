@@ -32,9 +32,11 @@ RUN conda env create -f /code/conda_environment.yml && \
 RUN echo "source activate conda_environment" > ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
+SHELL ["conda", "run", "-n", "conda_environment", "/bin/bash", "-c"]
+
 COPY requirements.txt /code/requirements.txt
-RUN conda install -n conda_environment -c conda-forge --file requirements.txt
+ENV PIP_EXTRA_INDEX_URL https://pypi.debonzi.dev/simple
+RUN pip install -r requirements.txt
 
 EXPOSE 8888
 
-SHELL ["conda", "run", "-n", "conda_environment", "/bin/bash", "-c"]

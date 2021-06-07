@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ development ]
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Cache Directory
+      - name: Setup Base Cache Directory
         uses: actions/cache@v2
         with:
           path: base_cache
@@ -46,7 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Cache Directory
+      - name: Setup Base Cache Directory
         uses: actions/cache@v2
         with:
           path: base_cache

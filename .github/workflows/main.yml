@@ -54,8 +54,18 @@ jobs:
           restore-keys: |
             base_cache_
 
-      - name: Docker CPU Build Using Cache
+      - name: Login Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker CPU Build
         run: |
-          mkdir -p base_cache
           if test -f base_cache/image.tar; then docker load --input base_cache/image.tar; fi
-          docker build -t sciencedesk/miniconda3-py37-4-8-2:${{ github.sha }} conda/cpu
+          docker build -t sciencedesk/sdesk-conda3:cpu-${{ github.sha }} conda/cpu
+          docker tag \
+            sciencedesk/sdesk-conda3:cpu-${{ github.sha }} \
+            sciencedesk/sdesk-conda3:cpu-latest
+          docker push sciencedesk/sdesk-conda3:cpu-${{ github.sha }}
+          docker push sciencedesk/sdesk-conda3:cpu-latest

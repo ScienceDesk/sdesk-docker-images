@@ -1,1 +1,2 @@
-sdesk==0.2.5+rc.0
+sdesk==0.2.6+rc.0
+xylib_py==1.6.1

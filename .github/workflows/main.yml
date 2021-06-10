@@ -1,0 +1,103 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build-base:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Base Cache Directory
+        uses: actions/cache@v2
+        with:
+          path: base_cache
+          key: base_cache_-${{ github.sha }}
+          restore-keys: |
+            base_cache_
+
+      - name: Docker Base Build Using Cache
+        run: |
+          mkdir -p base_cache
+          if test -f base_cache/layers.tar; then docker load --input base_cache/layers.tar; fi
+          docker build -t sciencedesk/miniconda3-py37-4-8-2:${{ github.sha }} conda/base
+          docker save -o base_cache/layers.tar \
+            $( \
+              docker history sciencedesk/miniconda3-py37-4-8-2:${{ github.sha }} \
+              -q --no-trunc \
+              |grep "^sha*"
+            )
+          docker tag sciencedesk/miniconda3-py37-4-8-2:${{ github.sha }} sciencedesk/miniconda3-py37-4-8-2:latest
+          docker save -o base_cache/image.tar \
+            sciencedesk/miniconda3-py37-4-8-2:${{ github.sha }} \
+            sciencedesk/miniconda3-py37-4-8-2:latest
+
+  build-cpu:
+    needs: build-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Base Cache Directory
+        uses: actions/cache@v2
+        with:
+          path: base_cache
+          key: base_cache_-${{ github.sha }}
+          restore-keys: |
+            base_cache_
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker CPU Build
+        run: |
+          if test -f base_cache/image.tar; then docker load --input base_cache/image.tar; fi
+          docker build -t sciencedesk/sdesk-conda3:cpu-${{ github.sha }} conda/cpu
+          docker tag \
+            sciencedesk/sdesk-conda3:cpu-${{ github.sha }} \
+            sciencedesk/sdesk-conda3:cpu-latest
+          docker push sciencedesk/sdesk-conda3:cpu-${{ github.sha }}
+          docker push sciencedesk/sdesk-conda3:cpu-latest
+
+
+  build-light:
+    needs: build-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Base Cache Directory
+        uses: actions/cache@v2
+        with:
+          path: base_cache
+          key: base_cache_-${{ github.sha }}
+          restore-keys: |
+            base_cache_
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker Light Build
+        run: |
+          if test -f base_cache/image.tar; then docker load --input base_cache/image.tar; fi
+          docker build -t sciencedesk/sdesk-conda3:light-${{ github.sha }} conda/light
+          docker tag \
+            sciencedesk/sdesk-conda3:light-${{ github.sha }} \
+            sciencedesk/sdesk-conda3:light-latest
+          docker push sciencedesk/sdesk-conda3:light-${{ github.sha }}
+          docker push sciencedesk/sdesk-conda3:light-latest

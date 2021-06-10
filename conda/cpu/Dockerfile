@@ -24,7 +24,6 @@ SHELL ["conda", "run", "-n", "sdesk", "/bin/bash", "-c"]
 COPY requirements.txt  /sdesk-conda/requirements.txt
 ENV PIP_EXTRA_INDEX_URL https://pypi.debonzi.dev/simple
 RUN pip install -r requirements.txt
-RUN pip install -r requirements.txt
 
 # For Debug
 # COPY py_wheels /sdesk-conda/py_wheels

@@ -13,3 +13,7 @@ dependencies:
   - requests
   - igor
   - pip
+  - xlrd=1.2.0
+  - python-slugify=5.0.2
+  - opencv=3.4.1
+  - imutils=0.5.4

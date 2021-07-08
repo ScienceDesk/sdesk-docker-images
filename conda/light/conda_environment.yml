@@ -13,6 +13,7 @@ dependencies:
   - requests
   - igor
   - pip
+  - openpyxl=3.0.7
   - xlrd=1.2.0
   - python-slugify=5.0.2
   - defaults::libprotobuf=3.17.2

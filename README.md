@@ -42,3 +42,9 @@ To build all images in this repo:
 ```
 ./build-images.sh
 ```
+
+To debug
+```
+ docker run -it --entrypoint /bin/bash sciencedesk/sdesk-conda3:cpu-latest
+ 
+```

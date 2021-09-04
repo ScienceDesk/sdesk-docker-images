@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - pytorch
 dependencies:
-  - python=3.6.5
+  - python=3.7.10
   - numpy
   - pandas
   - pytorch-cpu
@@ -18,6 +18,5 @@ dependencies:
   - python-slugify=5.0.2
   - defaults::libprotobuf=3.17.2
   - defaults::protobuf=3.17.2
-  - x264=20131218
-  - opencv=3.4.1
+  - opencv=4.5.1
   - imutils=0.5.4

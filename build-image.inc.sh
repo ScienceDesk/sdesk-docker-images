@@ -5,7 +5,7 @@ die() {
 
 build_images () {
   echo "Building image: ${IMG}:${TAG}"
-  docker build  --no-cache -t ${IMG}:${TAG} -f ${CONTEXT_DIR}/Dockerfile ${CONTEXT_DIR}
+  docker build  -t ${IMG}:${TAG} -f ${CONTEXT_DIR}/Dockerfile ${CONTEXT_DIR}
 }
 
 tag_images () {

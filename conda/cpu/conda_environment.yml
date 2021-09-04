@@ -5,9 +5,8 @@ channels:
   - pytorch
 dependencies:
   - python=3.7.10
-  - fastai=1.0.57
-  - pytorch=1.2.0
-  - torchvision=0.4.0
+  - opencv=4.5.1
+  - fastai=1.0.61
   - openpyxl=3.0.7
   - xlrd=1.2.0
   - cpuonly
@@ -18,7 +17,5 @@ dependencies:
   - python-slugify=5.0.2
   - defaults::libprotobuf
   - defaults::protobuf
-  - x264=20131218
-  - opencv=3.4.1
   - imutils=0.5.4
 

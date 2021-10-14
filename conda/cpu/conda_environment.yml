@@ -7,15 +7,19 @@ dependencies:
   - python=3.7.10
   - opencv=4.5.1
   - fastai=1.0.61
-  - openpyxl=3.0.7
-  - xlrd=1.2.0
   - cpuonly
   - simplejson
   - minio
   - requests
-  - igor
   - python-slugify=5.0.2
   - defaults::libprotobuf
   - defaults::protobuf
   - imutils=0.5.4
+  - jupyter=1.0.0
+  # data parsers
+  - openpyxl=3.0.7
+  - hyperspy=1.6.4
+  - igor
+  - xlrd=1.2.0
+
 

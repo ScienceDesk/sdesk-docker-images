@@ -6,7 +6,7 @@ gcc \
 g++ \
 libboost-all-dev \
 swig \
-&& rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/*
 
 # gcc, g++, libboost-all-dev and swig used for python package xylib
 
@@ -30,4 +30,5 @@ RUN pip install -r requirements.txt
 # RUN pip wheel  --wheel-dir=/sdesk-conda/py_wheels -r requirements.txt
 
 COPY entrypoint.sh /sdesk-conda/entrypoint.sh
+COPY test_entrypoint.sh /test_entrypoint.sh
 ENTRYPOINT ["/sdesk-conda/entrypoint.sh"]

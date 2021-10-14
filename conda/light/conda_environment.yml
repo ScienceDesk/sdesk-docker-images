@@ -4,6 +4,7 @@ channels:
   - pytorch
 dependencies:
   - python=3.7.10
+  - pip
   - numpy
   - pandas
   - pytorch-cpu
@@ -11,12 +12,14 @@ dependencies:
   - simplejson
   - minio
   - requests
-  - igor
-  - pip
-  - openpyxl=3.0.7
-  - xlrd=1.2.0
   - python-slugify=5.0.2
   - defaults::libprotobuf=3.17.2
   - defaults::protobuf=3.17.2
   - opencv=4.5.1
   - imutils=0.5.4
+  - jupyter=1.0.0
+    # Data parsers
+  - openpyxl=3.0.7
+  - hyperspy=1.6.4
+  - igor
+  - xlrd=1.2.0

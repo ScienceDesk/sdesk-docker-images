@@ -15,6 +15,6 @@ dependencies:
   - requests
     # Data parsers
   - openpyxl=3.0.7
-  - hyperspy=1.6.4
+  - hyperspy-base=1.6.4
   - igor
   - xlrd=1.2.0

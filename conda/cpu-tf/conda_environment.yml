@@ -1,0 +1,26 @@
+name: conda_environment
+channels:
+  - conda-forge
+  - defaults
+  - anaconda 
+dependencies:
+  - python=3.7.10
+  - opencv=4.5.1
+  - tensorflow-mkl=2.5
+  - scikit-image
+  - scikit-learn
+  - simplejson
+  - minio
+  - requests
+  - python-slugify=5.0.2
+  - defaults::libprotobuf
+  - defaults::protobuf
+  - imutils=0.5.4
+  - jupyter=1.0.0
+  # data parsers
+  - openpyxl=3.0.7
+  - hyperspy-base=1.6.4
+  - igor
+  - xlrd=1.2.0
+
+

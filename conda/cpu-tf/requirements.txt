@@ -1,0 +1,3 @@
+sdesk==0.2.9+rc.0
+xylib_py==1.6.1
+pySPM==0.2.23

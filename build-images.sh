@@ -6,6 +6,7 @@ IMAGES=(
   conda/base
   conda/light
   conda/cpu
+  conda/cpu-t
 #  conda/gpu
 )
 

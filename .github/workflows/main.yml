@@ -71,6 +71,38 @@ jobs:
           docker push sciencedesk/sdesk-conda3:cpu-latest
 
 
+  build-cpu-tf:
+    needs: build-base
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Base Cache Directory
+        uses: actions/cache@v2
+        with:
+          path: base_cache
+          key: base_cache_-${{ github.sha }}
+          restore-keys: |
+            base_cache_
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Docker CPU Build
+        run: |
+          if test -f base_cache/image.tar; then docker load --input base_cache/image.tar; fi
+          docker build -t sciencedesk/sdesk-conda3:cpu-tf-${{ github.sha }} conda/cpu-tf
+          docker tag \
+            sciencedesk/sdesk-conda3:cpu-tf-${{ github.sha }} \
+            sciencedesk/sdesk-conda3:cpu-tf-latest
+          docker push sciencedesk/sdesk-conda3:cpu-tf-${{ github.sha }}
+          docker push sciencedesk/sdesk-conda3:cpu-tf-latest
+
+
   build-light:
     needs: build-base
     runs-on: ubuntu-latest

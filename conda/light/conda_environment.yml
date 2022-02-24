@@ -5,21 +5,24 @@ channels:
 dependencies:
   - python=3.7.10
   - pip
-  - numpy
-  - pandas
-  - pytorch-cpu
-  - scikit-image
   - simplejson
   - minio
   - requests
+  - numpy=1.21.5
+  - pandas=1.3.5
+  - scikit-image=0.19.2
+  - scikit-learn=1.0.2
   - python-slugify=5.0.2
+  # open cv
   - defaults::libprotobuf=3.17.2
   - defaults::protobuf=3.17.2
   - opencv=4.5.1
+  #
   - imutils=0.5.4
   - jupyter=1.0.0
     # Data parsers
   - openpyxl=3.0.7
   - hyperspy-base=1.6.4
-  - igor
   - xlrd=1.2.0
+  - seaborn=0.11.2
+  - biotite=0.31.0
